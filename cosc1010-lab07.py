@@ -1,9 +1,9 @@
-# Your Name Here
+# Jared Vickrey
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
-# Sources, people worked with, help given to: 
+# 10/29/2024
+# Lab 07
+# Lab Section: 10
+# Sources, people worked with, help given to: chatGPT was used to debug: https://chatgpt.com/share/6721620b-299c-800f-b9a9-9b58680632ba
 # your
 # comments
 # here
@@ -16,8 +16,16 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
-
 factorial = 1
+while True:
+    upperBound = input("Upper Bound: ")
+    if upperBound.isdigit():
+        upperBound = int(upperBound)
+        for i in range(1, upperBound + 1):
+            factorial *= i
+        break
+    else:
+        print("Please input a positive integer")
 
 print(f"The result of the factorial based on the given bound is {factorial}")
 
@@ -36,10 +44,18 @@ print("*"*75)
     # I recommend checking out: https://www.w3schools.com/python/ref_string_replace.asp to figure out how one may remove a character from a string
 # All this together means you will have an intensive while loop that includes multiple if statements, likely with some nesting 
 # The sum should start at 0 
-
-num_sum = 0 
-
-print(f"Your final sum is {num_sum}")
+numSum = 0
+num = 0
+while 1==1:
+    num = input("Integer to add: ")
+    if num.lower() == "exit" or num.lower() == "e":
+        break
+    elif num.lstrip('-').isdigit():
+        num = int(num)
+        numSum += num
+    else:
+        print("Please enter an integer or 'exit'.") 
+print(f"Your final sum is {numSum}")
 
 print("*"*75)
 # Now you will be creating a two operand calculator
@@ -59,4 +75,42 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+while 1==1:
+    expression = input("Your two operand expression: ")
+    if len(expression.split()) == 3:
+        operand1, operator, operand2 = expression.split()
+    else:
+        print("Invalid Expression")
+        continue
+
+    if operand1.lstrip('-').isdigit():
+        operand1 = int(operand1)
+    else:
+        print("Invalid Expression")
+        continue
+
+    if operand2.lstrip('-').isdigit():
+        operand2 = int(operand2)
+    else:
+        print("Invalid Expression")
+        continue
+
+    if operator == '+':
+        result = operand1 + operand2
+        break
+    elif operator == '-':
+        result = operand1 - operand2
+        break
+    elif operator == '/':
+        result = operand1 / operand2
+        break
+    elif operator == '*':
+        result = operand1 * operand2
+        break
+    elif operator == '%':
+        result = operand1 % operand2
+        break
+    else:
+        print("Invalid Expression")
+        continue
+print(f"{expression} = {result}")
